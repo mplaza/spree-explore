@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spree::Admin::PointAgreementController do 
 
 	# before do
- #    	@admin = Spree::User.create(email: 'dev@fapl.co', password:'test1234')
+ #    	@admin = Spree::User.create(email: 'admin@test.com', password:'test1234')
  #    	puts @admin
  #    	sign_in @admin
  #  	end
