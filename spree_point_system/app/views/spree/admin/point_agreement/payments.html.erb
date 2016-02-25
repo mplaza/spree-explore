@@ -1,0 +1,16 @@
+<h2>Monthly Points</h2>
+
+<div class="row">
+		<div class="col-sm-4 h4">Point Action</div>
+		<div class="col-sm-4 h4">Number of Points Awarded</div>
+		<div class="col-sm-4 h4">Total Cost of Likes</div>
+	</div>
+
+<% @categories.each do |point_category| %>
+	<div class="row">
+		<div class="col-sm-4"><%= point_category.category %></div>
+		<div class="col-sm-4"><%= point_category.count_for_current_month %></div>
+		<div class="col-sm-4">$<%= point_category.cost_for_current_month %></div>
+	</div>
+<%end%>
+

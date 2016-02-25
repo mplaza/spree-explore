@@ -2,3 +2,9 @@
 Placeholder manifest file.
 the installer will append this file to the app vendored assets here: 'vendor/assets/stylesheets/spree/backend/all.css'
 */
+.vertical-center{
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right:-4px;
+}

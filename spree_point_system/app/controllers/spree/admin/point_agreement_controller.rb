@@ -4,4 +4,8 @@ class Spree::Admin::PointAgreementController < Spree::Admin::BaseController
 		@agreements = PointAgreement.all
 	end
 
+	def payments
+		@categories = PointCategory.all
+	end
+
 end
