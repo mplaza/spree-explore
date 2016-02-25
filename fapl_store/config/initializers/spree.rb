@@ -17,9 +17,9 @@ end
 
 Spree.user_class = "Spree::User"
 
-Spree::Image.attachment_definitions[:attachment][:url] = '/spree/products/:tenant/:id/:style/:basename.:extension'
-Spree::Image.attachment_definitions[:attachment][:path] = ':rails_root/public/spree/products/:tenant/:id/:style/:basename.:extension'
+# Spree::Image.attachment_definitions[:attachment][:url] = '/spree/products/:tenant/:id/:style/:basename.:extension'
+# Spree::Image.attachment_definitions[:attachment][:path] = ':rails_root/public/spree/products/:tenant/:id/:style/:basename.:extension'
 
-Paperclip.interpolates :tenant do |attachment, _style|
-  attachment.instance.tenant
-end
+# Paperclip.interpolates :tenant do |attachment, _style|
+#   attachment.instance.tenant
+# end

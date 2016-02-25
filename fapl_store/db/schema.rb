@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224210005) do
+ActiveRecord::Schema.define(version: 20160225010054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,29 @@ ActiveRecord::Schema.define(version: 20160224210005) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "point_actions", force: :cascade do |t|
+    t.integer  "point_category_id"
+    t.integer  "user_id"
+    t.integer  "pictorial_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "point_actions", ["point_category_id"], name: "index_point_actions_on_point_category_id", using: :btree
+
   create_table "point_agreements", force: :cascade do |t|
-    t.string   "awarded_for"
-    t.decimal  "cost_per_like"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "point_category_id"
+    t.decimal  "cost_per_point",    precision: 8, scale: 2
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "point_agreements", ["point_category_id"], name: "index_point_agreements_on_point_category_id", using: :btree
+
+  create_table "point_categories", force: :cascade do |t|
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "spree_addresses", force: :cascade do |t|
@@ -1006,4 +1024,6 @@ ActiveRecord::Schema.define(version: 20160224210005) do
   add_index "spree_zones", ["default_tax"], name: "index_spree_zones_on_default_tax", using: :btree
   add_index "spree_zones", ["kind"], name: "index_spree_zones_on_kind", using: :btree
 
+  add_foreign_key "point_actions", "point_categories"
+  add_foreign_key "point_agreements", "point_categories"
 end
